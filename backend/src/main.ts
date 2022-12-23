@@ -3,15 +3,15 @@ import {DocumentBuilder, SwaggerDocumentOptions, SwaggerModule} from '@nestjs/sw
 import {ConfigService} from '@nestjs/config';
 import {VersioningType} from '@nestjs/common';
 import {CreateDtoPipe} from '@steroidsjs/nest/src/infrastructure/pipes/CreateDtoPipe';
-import './envInit';
 import {ValidationExceptionFilter} from '@steroidsjs/nest/src/infrastructure/filters/ValidationExceptionFilter';
 import {UserExceptionFilter} from '@steroidsjs/nest/src/infrastructure/filters/UserExceptionFilter';
 import * as basicAuth from 'express-basic-auth';
-import {AppModule} from './AppModule';
+import {NestGiiModule} from './NestGiiModule';
 import {SchemaSerializer} from './SchemaSerializer';
+import './envInit';
 
 async function bootstrap() {
-    const app = await NestFactory.create(AppModule);
+    const app = await NestFactory.create(NestGiiModule);
     const configService = app.get(ConfigService);
 
     // Versioning

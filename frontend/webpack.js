@@ -1,3 +1,5 @@
+require('./envInit');
+
 require('@steroidsjs/webpack').config({
-    port: 9991,
+    port: process.env.NEST_GII_FRONTEND_PORT,
 });

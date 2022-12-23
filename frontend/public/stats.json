@@ -1,0 +1,175 @@
+{
+  "errors": [],
+  "warnings": [],
+  "assetsByChunkName": {
+    "common": "frontend/bundle-common.4b5cb48becda5e96f826.js",
+    "index": [
+      "frontend/bundle-index.4b5cb48becda5e96f826.css",
+      "frontend/bundle-index.4b5cb48becda5e96f826.js"
+    ]
+  },
+  "assets": [
+    {
+      "name": "bundle-all.js",
+      "size": 620,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": true
+    },
+    {
+      "name": "frontend/bundle-common.4b5cb48becda5e96f826.js",
+      "size": 1498,
+      "chunks": [
+        "common"
+      ],
+      "chunkNames": [
+        "common"
+      ],
+      "info": {
+        "immutable": true
+      },
+      "emitted": true
+    },
+    {
+      "name": "frontend/bundle-index.4b5cb48becda5e96f826.css",
+      "size": 213588,
+      "chunks": [
+        "index"
+      ],
+      "chunkNames": [
+        "index"
+      ],
+      "info": {
+        "immutable": true
+      },
+      "emitted": true
+    },
+    {
+      "name": "frontend/bundle-index.4b5cb48becda5e96f826.js",
+      "size": 1186914,
+      "chunks": [
+        "index"
+      ],
+      "chunkNames": [
+        "index"
+      ],
+      "info": {
+        "immutable": true
+      },
+      "emitted": true
+    },
+    {
+      "name": "frontend/images/arrow-left.4ca10af2ce039bf5870507fee1eb9b95.svg",
+      "size": 508,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {
+        "immutable": true,
+        "sourceFilename": "node_modules/@fortawesome/fontawesome-free/svgs/solid/arrow-left.svg"
+      },
+      "emitted": true
+    },
+    {
+      "name": "frontend/images/check-circle.fcea95e304118edd1e760b31d43ab7c3.svg",
+      "size": 616,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {
+        "immutable": true,
+        "sourceFilename": "node_modules/@fortawesome/fontawesome-free/svgs/solid/check-circle.svg"
+      },
+      "emitted": true
+    },
+    {
+      "name": "frontend/images/eye-slash.48c0435f2eaab5a6897655c79b434236.svg",
+      "size": 995,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {
+        "immutable": true,
+        "sourceFilename": "node_modules/@fortawesome/fontawesome-free/svgs/solid/eye-slash.svg"
+      },
+      "emitted": true
+    },
+    {
+      "name": "frontend/images/eye.e4021988b8bd5ed1e8992e0658bf7721.svg",
+      "size": 590,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {
+        "immutable": true,
+        "sourceFilename": "node_modules/@fortawesome/fontawesome-free/svgs/solid/eye.svg"
+      },
+      "emitted": true
+    },
+    {
+      "name": "frontend/images/pen-square.8a84e9b4daf936fa53ecb09c5b04ae05.svg",
+      "size": 649,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {
+        "immutable": true,
+        "sourceFilename": "node_modules/@fortawesome/fontawesome-free/svgs/solid/pen-square.svg"
+      },
+      "emitted": true
+    },
+    {
+      "name": "frontend/images/plus-square.1a42b2819bb0b6733b1740df6a672af6.svg",
+      "size": 569,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {
+        "immutable": true,
+        "sourceFilename": "node_modules/@fortawesome/fontawesome-free/svgs/solid/plus-square.svg"
+      },
+      "emitted": true
+    },
+    {
+      "name": "frontend/images/times-circle.fbe9a71fb4cca6c00727edfa817798b2.svg",
+      "size": 635,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {
+        "immutable": true,
+        "sourceFilename": "node_modules/@fortawesome/fontawesome-free/svgs/solid/times-circle.svg"
+      },
+      "emitted": true
+    },
+    {
+      "name": "frontend/images/trash.16bcf1021aabb13e1f4677dc3e83cf22.svg",
+      "size": 494,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {
+        "immutable": true,
+        "sourceFilename": "node_modules/@fortawesome/fontawesome-free/svgs/solid/trash.svg"
+      },
+      "emitted": true
+    },
+    {
+      "name": "frontend/index.html",
+      "size": 432,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": true
+    }
+  ],
+  "filteredAssets": 0,
+  "assetsUrls": [
+    "frontend/images/arrow-left.4ca10af2ce039bf5870507fee1eb9b95.svg",
+    "frontend/images/check-circle.fcea95e304118edd1e760b31d43ab7c3.svg",
+    "frontend/images/eye-slash.48c0435f2eaab5a6897655c79b434236.svg",
+    "frontend/images/eye.e4021988b8bd5ed1e8992e0658bf7721.svg",
+    "frontend/images/pen-square.8a84e9b4daf936fa53ecb09c5b04ae05.svg",
+    "frontend/images/plus-square.1a42b2819bb0b6733b1740df6a672af6.svg",
+    "frontend/images/times-circle.fbe9a71fb4cca6c00727edfa817798b2.svg",
+    "frontend/images/trash.16bcf1021aabb13e1f4677dc3e83cf22.svg",
+    "frontend/bundle-common.4b5cb48becda5e96f826.js",
+    "frontend/bundle-index.4b5cb48becda5e96f826.css",
+    "frontend/bundle-index.4b5cb48becda5e96f826.js",
+    "bundle-all.js",
+    "frontend/index.html"
+  ]
+}

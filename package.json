@@ -1,0 +1,19 @@
+{
+  "name": "vkoktashev-steroids-nest-gii",
+  "version": "0.0.10",
+  "description": "Steroids Nest Gii",
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "start:dev": "nps start:dev",
+    "build": "nps build"
+  },
+  "bin": {
+    "steroids-nest-gii": "bin.js"
+  },
+  "dependencies": {
+    "concurrently": "^7.6.0",
+    "copyfiles": "^2.4.1",
+    "nps": "^5.10.0"
+  }
+}

@@ -1,19 +1,19 @@
-import {Body, Controller, Post} from '@nestjs/common';
+import {Body, Controller, Inject, Post} from '@nestjs/common';
 import {ApiOkResponse, ApiTags} from '@nestjs/swagger';
 import {ContextDto} from '@steroidsjs/nest/src/usecases/dtos/ContextDto';
 import {Context} from '@steroidsjs/nest/src/infrastructure/decorators/Context';
 import {AuthInitSchema} from '../schemas/AuthInitSchema';
-import {UserService} from '../../../user/domain/services/UserService';
 import getExportedEnums from '../helpers/getExportedEnums';
-import getExportedModels from '../helpers/getExportedModels';
 import {InitRequestDto} from '../../usecases/dtos/InitRequestDto';
 import {exportEnums, exportModels} from '../helpers/entitiesExporter';
+import {EntityService} from '../../../entity/infrastructure/services/EntityService';
 
 @ApiTags('Авторизация')
 @Controller('/init')
 export class InitController {
     constructor(
-        private userService: UserService,
+        @Inject(EntityService)
+        protected entityService: EntityService,
     ) {}
 
     @Post()
@@ -22,12 +22,11 @@ export class InitController {
         @Context() context: ContextDto,
         @Body() dto: InitRequestDto,
     ) {
-        const user = context.user?.id ? await this.userService.findById(context.user.id) : null;
-
         const exportedEnums = exportEnums(getExportedEnums());
 
         return {
-            user,
+            project: await this.entityService.getProjectInfo(),
+            fields: this.entityService.getFieldsConfig(),
             meta: {
                 ...exportedEnums,
             },

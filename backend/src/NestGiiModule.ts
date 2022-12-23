@@ -7,6 +7,8 @@ import config from './config';
 import {ValidationExceptionFilterCustom} from './base/infrastructure/filters/ValidationExceptionFilterCustom';
 import {RequestExecutionExceptionFilter} from './base/infrastructure/filters/RequestExecutionExceptionFilter';
 import {InitModule} from './init/infrastructure/InitModule';
+import {EntityModule} from './entity/infrastructure/EntityModule';
+import {EntityCodeGenerateCommand} from './entity/infrastructure/commands/EntityCodeGenerateCommand';
 
 @Module({
     imports: [
@@ -16,8 +18,10 @@ import {InitModule} from './init/infrastructure/InitModule';
         ScheduleModule.forRoot(),
         InitModule,
         CommandModule,
+        EntityModule,
     ].filter(Boolean),
     providers: [
+        EntityCodeGenerateCommand,
         {
             provide: APP_FILTER,
             useClass: ValidationExceptionFilterCustom,
@@ -28,5 +32,5 @@ import {InitModule} from './init/infrastructure/InitModule';
         },
     ],
 })
-export class AppModule {
+export class NestGiiModule {
 }

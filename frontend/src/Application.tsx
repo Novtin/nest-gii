@@ -12,7 +12,10 @@ export default function Application() {
         screen: true,
         components: {
             locale: LocaleComponent,
-            http: HttpComponent,
+            http: {
+                className: HttpComponent,
+                apiUrl: process.env.APP_BACKEND_URL,
+            },
         },
         onInit: ({ui}) => {
             ui.addViews(require('./ui/bootstrap').default);

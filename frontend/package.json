@@ -1,6 +1,6 @@
 {
-  "name": "nest-gii",
-  "description": "nest-gii frontend",
+  "name": "steroidsNestGiiFrontend",
+  "description": "Steroids Nest Gii Frontend",
   "version": "1.0.0",
   "main": "src/index.ts",
   "license": "MIT",
@@ -19,6 +19,7 @@
     "@types/react": "~17.0.1",
     "@types/webpack-env": "^1.15.1",
     "connected-react-router": "^6.9.1",
+    "dot-prop-immutable": "^2.1.1",
     "eslint": "^7.2.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

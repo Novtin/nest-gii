@@ -1,0 +1,15 @@
+scripts:
+  copyAssets: >-
+    copyfiles ./{package.json,LICENSE,README.md,bin.js} dist/
+    && copyfiles -u 2 "./frontend/public/**/*" dist/frontend
+    && copyfiles -u 2 "./backend/dist/**/*" dist/backend
+    && copyfiles -u 2 "./backend/public/**/*" dist/public
+  build: concurrently "cd backend && yarn build" "cd frontend && yarn build" && nps copy-assets
+  start:dev: concurrently "cd backend && yarn start:dev" "cd frontend && yarn watch"
+  start: concurrently "cd backend && node main"
+  publish:
+    prepare: yarn && nps build
+    manual:
+      script: npm whoami && nps publish.prepare && cd dist && npm publish
+      description: 'Use it to publish to NPM manually (authorize to NPM first)'
+

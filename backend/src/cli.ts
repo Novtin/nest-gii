@@ -1,12 +1,12 @@
 import {NestFactory} from '@nestjs/core';
 import {CommandModule, CommandService} from 'nestjs-command';
 import './envInit';
-import {AppModule} from './AppModule';
+import {NestGiiModule} from './NestGiiModule';
 
 process.env.APP_IS_CLI = '1';
 
 async function bootstrap() {
-    const app = await NestFactory.createApplicationContext(AppModule, {
+    const app = await NestFactory.createApplicationContext(NestGiiModule, {
         logger: ['warn', 'error'], // only errors
     });
 
