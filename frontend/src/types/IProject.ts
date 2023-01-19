@@ -1,14 +1,6 @@
-export interface IProjectEntity {
-    name: string,
-    path: string,
-}
+import {IRepository} from './IRepository';
 
 export interface IProject {
-    modules: Array<{
-        name: string,
-        models: Array<IProjectEntity>,
-        dtos: Array<IProjectEntity>,
-        enums: Array<IProjectEntity>,
-        schemas: Array<IProjectEntity>,
-    }>
+    name: string;
+    repositories: Array<IRepository>;
 }

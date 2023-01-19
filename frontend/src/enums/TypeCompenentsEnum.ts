@@ -1,6 +1,6 @@
 import Enum from '@steroidsjs/core/base/Enum';
 import {CheckboxField, DropDownField, InputField} from '@steroidsjs/core/ui/form';
-import {IProject} from '../types/IProject';
+import {IBackendRepository} from '../types/IBackendRepository';
 import {RelationTypeEnum} from './RelationTypeEnum';
 
 export class TypeComponentsEnum extends Enum {
@@ -39,7 +39,7 @@ export class TypeComponentsEnum extends Enum {
         }
     }
 
-    private static reduceEntitiesAndGetEnum(entityType: string, project: IProject) {
+    private static reduceEntitiesAndGetEnum(entityType: string, project: IBackendRepository) {
         return project.modules?.reduce((items, module) => {
             const moduleEntities = module[entityType]?.map(enumItem => ({label: enumItem.name, id: enumItem.name}));
             if (moduleEntities?.length) {
@@ -49,7 +49,7 @@ export class TypeComponentsEnum extends Enum {
         }, []);
     }
 
-    static getItemsForDropdownComponent(fieldId: string, project: IProject) {
+    static getItemsForDropdownComponent(fieldId: string, project: IBackendRepository) {
         switch (fieldId) {
             case this.ENUM:
                 return this.reduceEntitiesAndGetEnum('enums', project);

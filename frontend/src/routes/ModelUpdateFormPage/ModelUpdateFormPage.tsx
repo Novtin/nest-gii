@@ -8,7 +8,7 @@ import {
     InputField
 } from '@steroidsjs/core/ui/form';
 import {useMemo} from 'react';
-import {IProject} from '../../types/IProject';
+import {IBackendRepository} from '../../types/IBackendRepository';
 import FieldListView from '../../shared/FieldListView';
 import FieldListItemView from '../../shared/FieldListItemView';
 import {getRouteParam} from '@steroidsjs/core/reducers/router';
@@ -20,26 +20,34 @@ export const ENTITY_UPDATE_FORM_ID = 'UpdateEntityForm';
 
 export default function ModelUpdateFormPage() {
     const bem = useBem('ModelUpdateFormPage');
+    const projectName = useSelector(state => getRouteParam(state, 'projectName'));
+    const repositoryUid = useSelector(state => getRouteParam(state, 'repositoryUid'));
     const modelName = useSelector(state => getRouteParam(state, 'modelName'));
-    const project: IProject = useSelector(state => state.auth?.data?.project);
     const fields = useSelector(state => state.auth?.data?.fields);
 
-    const modulesEnum = useMemo(() => (project?.modules || [])?.map(module => ({
+    const modelFetchConfig = useMemo(() => modelName && ({
+        url: `/api/v1/project/${projectName}/repository/${repositoryUid}/entity/${modelName}`,
+        method: 'get',
+    }), [modelName]);
+
+    const {data, isLoading}= useFetch(modelFetchConfig);
+
+    const repositoryFetchConfig = useMemo(() => repositoryUid && ({
+        url: `/api/v1/project/${projectName}/repository/${repositoryUid}`,
+        method: 'get',
+    }), [repositoryUid]);
+
+    const {data: repository}= useFetch(repositoryFetchConfig);
+
+    const modulesEnum = useMemo(() => (repository?.modules || [])?.map(module => ({
         label: module.name,
         id: module.name,
-    })), [project]);
+    })), [repository]);
 
     const fieldsEnum = useMemo(() => (fields || [])?.map(field => ({
         label: field.name,
         id: field.name,
-    })), [project]);
-
-    const fetchConfig = useMemo(() => modelName && ({
-        url: `/api/v1/entity/${modelName}`,
-        method: 'get',
-    }), [modelName]);
-
-    const {data, isLoading}= useFetch(fetchConfig);
+    })), [repository]);
 
     const exportDtoEnum = ['addToSaveDto', 'addToSearchDto', 'addToDetailSchema', 'addToSearchSchema'].map(item => ({
         label: item.replace('addTo', ''),
@@ -108,7 +116,7 @@ export default function ModelUpdateFormPage() {
                                 <FieldParamsList
                                     attribute={`${prefix}.params`}
                                     fields={fields}
-                                    project={project}
+                                    project={repository}
                                     fieldKey='params'
                                     label={__('Параметры')}
                                 />
@@ -119,7 +127,7 @@ export default function ModelUpdateFormPage() {
                                 <FieldParamsList
                                     attribute={`${prefix}.additionalParams`}
                                     fields={fields}
-                                    project={project}
+                                    project={repository}
                                     fieldKey='additionalParams'
                                     label={__('Дополнительно')}
                                 />

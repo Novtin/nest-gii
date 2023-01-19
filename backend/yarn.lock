@@ -966,13 +966,6 @@
   dependencies:
     uuid "8.3.2"
 
-"@nestjs/typeorm@^8.0.3":
-  version "8.0.3"
-  resolved "https://registry.yarnpkg.com/@nestjs/typeorm/-/typeorm-8.0.3.tgz#e62feb1f3ec7fa0d1353f774f3f6915594c34a4e"
-  integrity sha512-tf9rTXP6LeFInkwd+tktQhtLRsKp4RRYImprqT8gcHcJDx+xMP1IygnXELOKwF5vo2/mnhrGtBlRQ/iiS6170g==
-  dependencies:
-    uuid "8.3.2"
-
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -1111,10 +1104,17 @@
     eslint-plugin-react "^7.21.5"
     eslint-plugin-react-hooks "^1.7.0"
 
-"@steroidsjs/nest@1.5.0-beta.6":
-  version "1.5.0-beta.6"
-  resolved "https://registry.yarnpkg.com/@steroidsjs/nest/-/nest-1.5.0-beta.6.tgz#96d4ccc9e66636f6df50df2bbc313e1117e6c149"
-  integrity sha512-2rt7S/DqIrg1jQ0AGQ49aa6wpUiJiyCqjxDBBT2MwEaYN5JMQ4pKQYBbPAey+q+sxadQCHYrpv+trNYJbWw4Ug==
+"@steroidsjs/nest-typeorm@^9.0.1":
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/@steroidsjs/nest-typeorm/-/nest-typeorm-9.0.1.tgz#1bcd424e63df59df493c9e6d1f9f8e11d8f5e1a5"
+  integrity sha512-dpMSTu7oZObq95bVpeFPY897UWbROwiMEc3/OtxzLqxQLiyut2qpQjWSq3DF1dxlZFZIXVB2xt4FoB7ZFRiH3A==
+  dependencies:
+    uuid "9.0.0"
+
+"@steroidsjs/nest@^1.5.0-beta.16":
+  version "1.5.0-beta.16"
+  resolved "https://registry.yarnpkg.com/@steroidsjs/nest/-/nest-1.5.0-beta.16.tgz#5c550967ed478ce63d5160e473cc27b60767c215"
+  integrity sha512-y/KmX/Z60BAgWBA+5a4VGozBX4aUIwAVcOy972K7hZKaLvNfDyW5xfMAeu+c7lKMKQyWSIvhw/ErWcgNybFynQ==
   dependencies:
     "@dbml/core" "^2.3.1"
     "@nestjs/cli" "^8.2.2"
@@ -1123,8 +1123,9 @@
     "@nestjs/core" "^8.4.1"
     "@nestjs/platform-express" "^8.4.1"
     "@nestjs/swagger" "^5.2.0"
-    "@nestjs/typeorm" "^8.0.3"
     "@sqltools/formatter" "^1.2.3"
+    "@steroidsjs/nest-typeorm" "^9.0.1"
+    "@steroidsjs/typeorm" "^0.3.11"
     bluebird "^3.7.2"
     class-transformer "^0.5.1"
     class-validator "^0.13.2"
@@ -1135,8 +1136,30 @@
     pluralize "^8.0.0"
     rxjs "^7.2.0"
     typedi "^0.10.0"
-    typeorm "^0.3.11"
     uuid "^8.3.2"
+
+"@steroidsjs/typeorm@^0.3.11":
+  version "0.3.11"
+  resolved "https://registry.yarnpkg.com/@steroidsjs/typeorm/-/typeorm-0.3.11.tgz#09f0050664f03d1bb0fc05282cffe4fd8d0b2c45"
+  integrity sha512-MR8kHKHrbey5fUCl3P2PQkltTS7THoFlH1t3L4isDYMFmbLAZyW6n+MEE/g0x/+Uj/hfLbB0FDeJggVhqlk75g==
+  dependencies:
+    "@sqltools/formatter" "^1.2.2"
+    app-root-path "^3.0.0"
+    buffer "^6.0.3"
+    chalk "^4.1.0"
+    cli-highlight "^2.1.11"
+    date-fns "^2.28.0"
+    debug "^4.3.3"
+    dotenv "^16.0.0"
+    glob "^7.2.0"
+    js-yaml "^4.1.0"
+    mkdirp "^1.0.4"
+    reflect-metadata "^0.1.13"
+    sha.js "^2.4.11"
+    tslib "^2.3.1"
+    uuid "^8.3.2"
+    xml2js "^0.4.23"
+    yargs "^17.3.1"
 
 "@tokenizer/token@^0.3.0":
   version "0.3.0"
@@ -8822,6 +8845,11 @@ uuid@8.3.2, uuid@^8.3.2:
   version "8.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
+
+uuid@9.0.0, uuid@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-9.0.0.tgz#592f550650024a38ceb0c562f2f6aa435761efb5"
+  integrity sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==
 
 v8-compile-cache@^2.0.3:
   version "2.3.0"

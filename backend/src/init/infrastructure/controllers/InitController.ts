@@ -7,6 +7,7 @@ import getExportedEnums from '../helpers/getExportedEnums';
 import {InitRequestDto} from '../../usecases/dtos/InitRequestDto';
 import {exportEnums, exportModels} from '../helpers/entitiesExporter';
 import {EntityService} from '../../../entity/infrastructure/services/EntityService';
+import {ProjectService} from '../../../entity/infrastructure/services/ProjectService';
 
 @ApiTags('Авторизация')
 @Controller('/init')
@@ -14,6 +15,8 @@ export class InitController {
     constructor(
         @Inject(EntityService)
         protected entityService: EntityService,
+        @Inject(ProjectService)
+        protected projectService: ProjectService,
     ) {}
 
     @Post()
@@ -25,8 +28,8 @@ export class InitController {
         const exportedEnums = exportEnums(getExportedEnums());
 
         return {
-            project: await this.entityService.getProjectInfo(),
             fields: this.entityService.getFieldsConfig(),
+            projects: this.projectService.getProjectsList(),
             meta: {
                 ...exportedEnums,
             },

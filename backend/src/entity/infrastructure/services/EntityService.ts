@@ -1,18 +1,24 @@
 import * as fs from 'fs';
-import * as path from 'path';
 import * as ts from "typescript";
 import {CreateEntityDto} from '../../domain/dtos/CreateEntityDto';
-import {EntityCodeGenerator} from './EntityCodeGenerator';
+import {BackendEntityCodeGenerator} from '../generators/BackendEntityCodeGenerator';
 import {IFieldsConfig} from '../interfaces/IFieldsConfig';
 import {SteroidsFieldParamTypeEnum} from '../../domain/enums/SteroidsFieldParamTypeEnum';
-import {ValidationHelper} from '@steroidsjs/nest/src/usecases/helpers/ValidationHelper';
 import {SyntaxKind} from 'typescript';
-import {IProjectDtoEntity, IProjectInfo} from '../interfaces/IProjectInfo';
+import {IBackendDtoEntity} from '../interfaces/IBackendRepositoryInfo';
 import {DataMapper} from '@steroidsjs/nest/src/usecases/helpers/DataMapper';
+import {ProjectService} from './ProjectService';
+import {forwardRef, Inject} from '@nestjs/common';
+import {RepositoryService} from './RepositoryService';
 
 export class EntityService {
-    constructor() {
-    }
+    constructor(
+        @Inject(forwardRef(() => ProjectService))
+        private projectService: ProjectService,
+
+        @Inject(forwardRef(() => RepositoryService))
+        private repositoryService: RepositoryService,
+    ) {}
 
     private parseTypescriptValue (initializer: any) {
         switch (initializer.kind) {
@@ -25,9 +31,9 @@ export class EntityService {
         }
     }
 
-    public async parseEntityFields(entityInfo: IProjectDtoEntity) {
+    public async parseEntityFields(entityInfo: IBackendDtoEntity) {
         const text = fs.readFileSync(entityInfo.path).toString();
-        const ast: any = ts.createSourceFile('test.ts', text, ts.ScriptTarget.Latest).statements;
+        const ast: any = ts.createSourceFile('thisFileWillNotBeCreated.ts', text, ts.ScriptTarget.Latest).statements;
         const classNode = ast.find(node => node.name?.escapedText === entityInfo.name);
         const fieldsNodes = classNode.members;
         const fields = fieldsNodes.map(fieldNode => ({
@@ -38,14 +44,12 @@ export class EntityService {
                 [property.name?.escapedText]: this.parseTypescriptValue(property.initializer),
             }), {}),
         })).filter(Boolean);
-        // console.log(fields);
-        // console.log(util.inspect(fieldsNodes[7].decorators[0].expression.arguments[0].properties[3], {depth: null, colors: true}));
         return fields;
     }
 
-    public async getModelInitialValues(modelName: string) {
-        const projectInfo = await this.getProjectInfo();
-        const projectEntity = projectInfo.allEntities.find(entity => entity.name === modelName);
+    public async getModelInitialValues(repositoryUid: string, modelName: string) {
+        const repositoryInfo = await this.repositoryService.getInfoByUid(repositoryUid);
+        const projectEntity = repositoryInfo.allEntities.find(entity => entity.name === modelName);
         const modelFields = await this.parseEntityFields(projectEntity);
         const result = DataMapper.create<CreateEntityDto>(CreateEntityDto, {
             moduleName: projectEntity.module,
@@ -55,61 +59,17 @@ export class EntityService {
         return result;
     }
 
-    public async create(dto: CreateEntityDto) {
+    public async create(dto: CreateEntityDto, repositoryUid: string) {
+        const repository = this.repositoryService.get(repositoryUid);
         // await ValidationHelper.validate(dto);
-        (new EntityCodeGenerator(
+        (new BackendEntityCodeGenerator(
             dto.entityName,
             dto.moduleName,
-            null,
+            repository.path,
             dto,
             this.getFieldsConfig(),
-            await this.getProjectInfo(),
+            await this.repositoryService.getInfoByUid(repositoryUid),
         )).generate();
-    }
-
-    public async update(modelName: string, dto: CreateEntityDto) {
-
-    }
-
-    public async getProjectInfo(): Promise<IProjectInfo> {
-        const projectRootPath = process.cwd();
-        const objects = fs.readdirSync(path.resolve(projectRootPath, 'src'));
-        const result: IProjectInfo = {
-            modules: [],
-            allEntities: [],
-        };
-        for (const object of objects) {
-            if (!object.includes('.')) {
-                result.modules.push({
-                    name: object,
-                });
-            }
-        }
-
-        const entitiesToScan = [
-            {name: 'models', level: 'domain'},
-            {name: 'enums', level: 'domain'},
-            {name: 'dtos', level: 'domain'},
-            {name: 'schemas', level: 'infrastructure'},
-        ];
-        for (const module of result.modules) {
-            for (const entity of entitiesToScan) {
-                try {
-                    const entityDirectory = path.resolve(projectRootPath, 'src', module.name, entity.level, entity.name);
-                    const entityFiles = fs.readdirSync(entityDirectory);
-                    module[entity.name] = entityFiles
-                        .filter(file => file.endsWith('.ts'))
-                        .map(file => ({
-                            name: file.replace('.ts', ''),
-                            path: path.resolve(entityDirectory, file),
-                            module: module.name,
-                            type: entity.name.slice(0, -1),
-                        }));
-                    result.allEntities.push(...module[entity.name]);
-                } catch (e) {}
-            }
-        }
-        return result;
     }
 
     public getFieldsConfig(): IFieldsConfig {

@@ -7,7 +7,7 @@ import {getFormValues} from '@steroidsjs/core/reducers/form';
 import {get as _get} from 'dot-prop-immutable';
 import {ENTITY_FORM_ID} from '../../ModelFormPage';
 import {TypeComponentsEnum} from '../../../../enums/TypeCompenentsEnum';
-import {IProject} from '../../../../types/IProject';
+import {IBackendRepository} from '../../../../types/IBackendRepository';
 import ComponentLabelWrapper from '../ComponentLabelWrapper';
 import FieldSetView from '../../../../shared/FieldSetView';
 
@@ -15,7 +15,7 @@ interface IFieldOptionsFieldListProps {
     attribute?: string,
     fields?: any,
     fieldKey: string,
-    project: IProject,
+    project: IBackendRepository,
     label: string,
 }
 

@@ -1,0 +1,23 @@
+@import "style/variables";
+
+.BackendRepositoryPage {
+  padding: 30px;
+
+  &__entityBlock {
+    margin-left: 30px;
+  }
+
+  &__entityItems {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+  }
+
+  &__header {
+    margin-bottom: 10px;
+  }
+
+  &__subheader {
+    margin-bottom: 20px;
+  }
+}

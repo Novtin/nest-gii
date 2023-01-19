@@ -2,10 +2,9 @@ import {Body, Controller, Inject, Param, Post, Get} from '@nestjs/common';
 import {ApiTags} from '@nestjs/swagger';
 import {EntityService} from '../services/EntityService';
 import {CreateEntityDto} from '../../domain/dtos/CreateEntityDto';
-import * as util from 'util';
 
 @ApiTags('Модели')
-@Controller('/entity')
+@Controller('/project/:projectName/repository/:uid/entity')
 export class EntityController {
     constructor(
         @Inject(EntityService)
@@ -17,16 +16,17 @@ export class EntityController {
     // @ApiOkResponse({type: })
     async create(
         @Body() dto: CreateEntityDto,
+        @Param('uid') uid: string,
     ) {
-        console.log(util.inspect(dto, {depth: null, colors: true}));
-        return this.entityService.create(dto);
+        return this.entityService.create(dto, uid);
     }
 
     @Get('/:name')
     // @ApiOkResponse({type: })
     async get(
         @Param('name') name: string,
+        @Param('uid') uid: string,
     ) {
-        return this.entityService.getModelInitialValues(name);
+        return this.entityService.getModelInitialValues(uid, name);
     }
 }

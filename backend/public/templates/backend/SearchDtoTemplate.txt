@@ -1,0 +1,7 @@
+import {SearchInputDto} from '@steroidsjs/nest/src/usecases/dtos/SearchInputDto';
+import {ExtendField} from '@steroidsjs/nest/src/infrastructure/decorators/fields/ExtendField';
+import {%entityName%Model} from '../models/%entityName%Model';
+%searchDtoImports%
+export class %entityName%SearchDto extends SearchInputDto {
+%searchDtoFields%
+}

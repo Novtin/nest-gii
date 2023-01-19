@@ -1,0 +1,4 @@
+%modelImports%
+export class %entityName%Model {
+%modelFields%
+}

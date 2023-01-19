@@ -1,0 +1,32 @@
+import dotProps from 'dot-prop-immutable';
+
+export const ADD_%entityNameUpperCase% = 'add_%entityName%';
+export const SET_%entityNameUpperCase%_LOADING = 'set_%entityName%_loading';
+export const SET_%entityNameUpperCase%_TOTAL = 'set_%entityName%_total';
+
+const initialState = {
+    items: [],
+    isLoading: true,
+    total: 0,
+};
+
+export default (state = initialState, action: any) => {
+    switch (action.type) {
+        case SET_%entityNameUpperCase%_TOTAL: {
+            return dotProps.set(state, 'total', action.total);
+        }
+        case SET_%entityNameUpperCase%_LOADING: {
+            return dotProps.set(state, 'isLoading', action.isLoading);
+        }
+        case ADD_%entityNameUpperCase%: {
+            return dotProps.set(state, 'items', [...state.items, ...action.%entityName%]);
+        }
+        default: {
+            return state;
+        }
+    }
+};
+
+export const get%entityNameCamelCase% = (state: any) => state.%entityName%.items;
+export const get%entityNameCamelCase%Total = (state: any) => state.%entityName%.total;
+export const get%entityNameCamelCase%Loading = (state: any) => state.%entityName%.isLoading;

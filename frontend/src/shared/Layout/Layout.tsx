@@ -6,7 +6,7 @@ import {Notifications} from '@steroidsjs/core/ui/layout';
 import Header from '@steroidsjs/core/ui/layout/Header';
 
 import './Layout.scss';
-import {ROUTE_ROOT} from '../../routes';
+import {ROUTE_PROJECTS} from '../../routes';
 
 export default function Layout(props: React.PropsWithChildren<any>) {
     const bem = useBem('Layout');
@@ -27,7 +27,7 @@ export default function Layout(props: React.PropsWithChildren<any>) {
                     title: 'Steroids Nest Gii',
                 }}
                 nav={{
-                    items: ROUTE_ROOT,
+                    items: ROUTE_PROJECTS,
                 }}
             />
             <div className={bem.element('content')}>

@@ -2,10 +2,10 @@
   "errors": [],
   "warnings": [],
   "assetsByChunkName": {
-    "common": "frontend/bundle-common.4b5cb48becda5e96f826.js",
+    "common": "frontend/bundle-common.8a9cdb7014480669aee5.js",
     "index": [
-      "frontend/bundle-index.4b5cb48becda5e96f826.css",
-      "frontend/bundle-index.4b5cb48becda5e96f826.js"
+      "frontend/bundle-index.8a9cdb7014480669aee5.css",
+      "frontend/bundle-index.8a9cdb7014480669aee5.js"
     ]
   },
   "assets": [
@@ -18,7 +18,7 @@
       "emitted": true
     },
     {
-      "name": "frontend/bundle-common.4b5cb48becda5e96f826.js",
+      "name": "frontend/bundle-common.8a9cdb7014480669aee5.js",
       "size": 1498,
       "chunks": [
         "common"
@@ -32,8 +32,8 @@
       "emitted": true
     },
     {
-      "name": "frontend/bundle-index.4b5cb48becda5e96f826.css",
-      "size": 213588,
+      "name": "frontend/bundle-index.8a9cdb7014480669aee5.css",
+      "size": 213876,
       "chunks": [
         "index"
       ],
@@ -46,8 +46,8 @@
       "emitted": true
     },
     {
-      "name": "frontend/bundle-index.4b5cb48becda5e96f826.js",
-      "size": 1186914,
+      "name": "frontend/bundle-index.8a9cdb7014480669aee5.js",
+      "size": 1196312,
       "chunks": [
         "index"
       ],
@@ -166,9 +166,9 @@
     "frontend/images/plus-square.1a42b2819bb0b6733b1740df6a672af6.svg",
     "frontend/images/times-circle.fbe9a71fb4cca6c00727edfa817798b2.svg",
     "frontend/images/trash.16bcf1021aabb13e1f4677dc3e83cf22.svg",
-    "frontend/bundle-common.4b5cb48becda5e96f826.js",
-    "frontend/bundle-index.4b5cb48becda5e96f826.css",
-    "frontend/bundle-index.4b5cb48becda5e96f826.js",
+    "frontend/bundle-common.8a9cdb7014480669aee5.js",
+    "frontend/bundle-index.8a9cdb7014480669aee5.css",
+    "frontend/bundle-index.8a9cdb7014480669aee5.js",
     "bundle-all.js",
     "frontend/index.html"
   ]

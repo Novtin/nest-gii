@@ -1,0 +1,15 @@
+@import "style/variables";
+
+.ProjectsPage {
+  padding: 20px;
+
+  &__header {
+    margin-bottom: 30px;
+  }
+
+  &__repositories {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+  }
+}

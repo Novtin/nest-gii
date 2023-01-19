@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "nest build",
+    "build": "nest build --webpack",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -35,7 +35,7 @@
     "@sentry/types": "^6.18.2",
     "@sqltools/formatter": "^1.2.3",
     "@steroidsjs/eslint-config": "^2.0.0-beta.3",
-    "@steroidsjs/nest": "1.5.0-beta.6",
+    "@steroidsjs/nest": "^1.5.0-beta.16",
     "@types/cron": "^1.7.3",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/multer": "^1.4.7",
@@ -69,6 +69,7 @@
     "stream-mime-type": "^1.0.2",
     "swagger-ui-express": "^4.3.0",
     "typeorm": "^0.3.11",
+    "uuid": "^9.0.0",
     "yargs": "^17.3.1"
   },
   "devDependencies": {

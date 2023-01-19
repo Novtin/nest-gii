@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useBem, useSelector} from '@steroidsjs/core/hooks';
+import {useBem, useFetch, useSelector} from '@steroidsjs/core/hooks';
 import {
     Button,
     CheckboxListField,
@@ -10,17 +10,26 @@ import {
 } from '@steroidsjs/core/ui/form';
 import {useCallback, useMemo} from 'react';
 import FieldParamsList from './views/FieldParamsList';
-import {IProject} from '../../types/IProject';
+import {IBackendRepository} from '../../types/IBackendRepository';
 import FieldListView from '../../shared/FieldListView';
 import FieldListItemView from '../../shared/FieldListItemView';
 import './ModelFormPage.scss';
+import {getRouteParam} from '@steroidsjs/core/reducers/router';
 
 export const ENTITY_FORM_ID = 'CreteEntityForm';
 
 export default function ModelFormPage() {
     const bem = useBem('ModelFormPage');
+    const projectName = useSelector(state => getRouteParam(state, 'projectName'));
+    const repositoryUid = useSelector(state => getRouteParam(state, 'repositoryUid'));
     const fields = useSelector(state => state.auth?.data?.fields);
-    const project: IProject = useSelector(state => state.auth?.data?.project);
+
+    const fetchConfig = useMemo(() => repositoryUid && ({
+        url: `/api/v1/project/${projectName}/repository/${repositoryUid}`,
+        method: 'get',
+    }), [repositoryUid]);
+
+    const {data: project, isLoading}= useFetch(fetchConfig);
 
     const modulesEnum = useMemo(() => (project?.modules || [])?.map(module => ({
         label: module.name,
@@ -50,7 +59,7 @@ export default function ModelFormPage() {
         <div className={bem.block()}>
             <Form
                 formId={ENTITY_FORM_ID}
-                action='/api/v1/entity'
+                action={`/api/v1/project/${projectName}/repository/${repositoryUid}/entity`}
                 initialValues={{
                     fields: [
                         {

@@ -1,0 +1,13 @@
+@import "style/variables";
+
+.FrontendRepositoryPage {
+  padding: 30px;
+
+  &__header {
+    margin-bottom: 10px;
+  }
+
+  &__subheader {
+    margin-bottom: 20px;
+  }
+}

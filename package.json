@@ -1,6 +1,6 @@
 {
   "name": "vkoktashev-steroids-nest-gii",
-  "version": "0.0.10",
+  "version": "0.0.14",
   "description": "Steroids Nest Gii",
   "author": "",
   "license": "MIT",
@@ -14,6 +14,7 @@
   "dependencies": {
     "concurrently": "^7.6.0",
     "copyfiles": "^2.4.1",
-    "nps": "^5.10.0"
+    "nps": "^5.10.0",
+    "dotenv": "^16.0.0"
   }
 }

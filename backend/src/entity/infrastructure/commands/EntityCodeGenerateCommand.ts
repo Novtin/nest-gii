@@ -1,6 +1,6 @@
 import {Command, Positional} from 'nestjs-command';
 import {Injectable} from '@nestjs/common';
-import {EntityCodeGenerator} from '../services/EntityCodeGenerator';
+import {BackendEntityCodeGenerator} from '../generators/BackendEntityCodeGenerator';
 
 
 @Injectable()
@@ -31,7 +31,7 @@ export class EntityCodeGenerateCommand {
             throw new Error('Required parameters are not provided');
         }
 
-        (new EntityCodeGenerator(
+        (new BackendEntityCodeGenerator(
             entityName,
             moduleName,
         )).generate();

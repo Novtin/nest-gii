@@ -1,7 +1,0 @@
-import {ExtendField} from '@steroidsjs/nest/src/infrastructure/decorators/fields/ExtendField';
-import {%entityName%Model} from '../../domain/models/%entityName%Model';
-%searchSchemaImports%
-
-export class %entityName%SearchSchema {
-%searchSchemaFields%
-}

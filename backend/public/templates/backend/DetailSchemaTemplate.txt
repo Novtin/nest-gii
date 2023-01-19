@@ -1,0 +1,6 @@
+import {ExtendField} from '@steroidsjs/nest/src/infrastructure/decorators/fields/ExtendField';
+import {%entityName%Model} from '../../domain/models/%entityName%Model';
+%detailSchemaImports%
+export class %entityName%DetailSchema {
+%detailSchemaFields%
+}
