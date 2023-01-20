@@ -197,7 +197,7 @@ export class BackendEntityCodeGenerator {
             .find(property => property.name.escapedText === 'providers');
 
         const lastRepository = providersNode.initializer.elements.reduce(
-            (prevRepository, element) => this.getProviderNameFromNode(element).endsWith('Repository') ? element : prevRepository,
+            (prevRepository, element) => this.getProviderNameFromNode(element)?.endsWith('Repository') ? element : prevRepository,
             null,
         );
         if (lastRepository) {
@@ -213,7 +213,7 @@ export class BackendEntityCodeGenerator {
         }
 
         const lastService = providersNode.initializer.elements.reduce(
-            (prevRepository, element) => this.getProviderNameFromNode(element).endsWith('Service') ? element : prevRepository,
+            (prevRepository, element) => this.getProviderNameFromNode(element)?.endsWith('Service') ? element : prevRepository,
             null,
         );
         if (lastService) {
