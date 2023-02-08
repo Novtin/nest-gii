@@ -1,5 +1,5 @@
 import {Module} from '@nestjs/common';
-import {ModuleHelper} from '@steroidsjs/nest/src/infrastructure/helpers/ModuleHelper';
+import {ModuleHelper} from '@steroidsjs/nest/infrastructure/helpers/ModuleHelper';
 %moduleImports%
 
 @Module({

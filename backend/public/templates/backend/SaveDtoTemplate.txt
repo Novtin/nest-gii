@@ -1,4 +1,4 @@
-import {ExtendField} from '@steroidsjs/nest/src/infrastructure/decorators/fields/ExtendField';
+import {ExtendField} from '@steroidsjs/nest/infrastructure/decorators/fields/ExtendField';
 import {%entityName%Model} from '../models/%entityName%Model';
 %saveDtoImports%
 export class %entityName%SaveDto {

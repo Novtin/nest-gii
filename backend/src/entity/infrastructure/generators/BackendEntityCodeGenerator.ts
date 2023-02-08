@@ -107,7 +107,7 @@ export class BackendEntityCodeGenerator {
         if (modelFieldsList.includes('RelationField') && !modelFieldsList.includes('RelationIdField')) {
             modelFieldsList += `,\n${tab()}RelationIdField`;
         }
-        this.modelImports = `import {\n${modelFieldsList},\n} from '@steroidsjs/nest/src/infrastructure/decorators/fields';\n`;
+        this.modelImports = `import {\n${modelFieldsList},\n} from '@steroidsjs/nest/infrastructure/decorators/fields';\n`;
 
         this.modelFields = this.generateModelFields();
         this.saveDtoFields = this.generateSaveDtoFields('saveDto');
