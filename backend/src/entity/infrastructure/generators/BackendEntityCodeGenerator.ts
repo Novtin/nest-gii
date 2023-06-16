@@ -193,9 +193,11 @@ export class BackendEntityCodeGenerator {
 
         const moduleNode = ast.find(node => node.name?.escapedText === `${this.moduleName}Module`);
 
-        const providersNode = moduleNode.decorators[0].expression.arguments[0].properties
-            .find(property => property.name.escapedText === 'providers');
+        const moduleDecorator = moduleNode.decorators.find(decorator => decorator.expression.expression.escapedText === 'Module');
 
+        const providersNode = moduleDecorator.expression.arguments[0].properties
+            .find(property => property.name.escapedText === 'providers');
+        
         const lastRepository = providersNode.initializer.elements.reduce(
             (prevRepository, element) => this.getProviderNameFromNode(element)?.endsWith('Repository') ? element : prevRepository,
             null,
